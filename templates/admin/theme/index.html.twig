@@ -1,0 +1,37 @@
+{% extends 'navigation/admin/nav.html.twig' %}
+
+{% block title %}Theme{% endblock %}
+
+{% block contents %}
+    <h1>Liste Themes</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Label</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for theme in themes %}
+            <tr>
+                <td>{{ theme.id }}</td>
+                <td>{{ theme.nom }}</td>
+                <td>{{ theme.description }}</td>
+                <td>
+                    <a href="{{ path('app_categorie_show', {'id': theme.id}) }}">show</a>
+                    <a href="{{ path('app_categorie_edit', {'id': theme.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="">Create new</a>
+{% endblock %}
